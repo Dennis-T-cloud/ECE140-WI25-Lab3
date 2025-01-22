@@ -1,15 +1,9 @@
-# ECE140-WI25-Lab2
+# ECE140-WI25-Lab3
 
-Run the command below to build the docker image:
-
-```
-docker build -t fastapi-app .
-```
-
-Then, run the command below to start the server:
+Run the command below to build the docker image and start the server:
 
 ```
-docker run -p 8000:8000 fastapi-app
+docker-compose up
 ```
 
 You should then get some terminal output showing that the server is running, just like what we've seen in Lab Session 1.
