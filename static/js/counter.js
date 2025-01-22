@@ -5,8 +5,7 @@ let count = 0;
 const counterDisplay = document.getElementById('counterDisplay');
 const saveStatus = document.getElementById('saveStatus');
 
-//new pop up about lab 3 part 1, 01/22/2025 Dennis added.
-alert("Counter initialized");
+
 
 // Function to update the counter
 function updateCounter(change) {
@@ -42,36 +41,43 @@ async function saveCounter() {
 // Initialize counter from server when page loads
 async function initializeCounter() {
     try {
-        
-        count = 0; // get this from the server at /get_count
-        //const response = await fetch('/get_count');
-        //if(!response.ok){
-        //  throw newError('Network error');
-        //}
-        //const data = await response.json();
-        //count = data.value;
+        //count = 0; // get this from the server at /get_count
+
+        //01/22/2025, lab 3 part 2, Dennis added:
+        const response = await fetch('/get_count');
+        if(!response.ok){
+            throw newError('Network error');
+        }
+        const data = await response.json();
+        count = data["count"];
+        //01/22/2025 added end.
+
         counterDisplay.textContent = count;
+
+
+
     } catch (error) {
         console.error('Error initializing counter:', error);
     }
 }
+
 
 function setConnectionStatus() {
     // once server counter is initialized with data from server
     // set div with id connectionStatus text content to "Connected" 
     // and color to green
 
-/*  const newDiv = document.getElementByID('connectionStatus');
-
-    fetch('/get_count')
-        .then(response => {
-            if (!response.ok){
-                throw new Error('Error, Status');
-            }
-            return response.json();
-        })
-        .then(data =>{
-            newDiv.textContent = 'Connected';
-            newDiv.style.color = 'green';
-        })*/
+    //01/22/2025 Dennis added:
+    const newDiv = document.getElementById('connectionStatus');
+    newDiv.textContent = 'Connected';
+    newDiv.style.color = 'green';
+    //01/22/2025 added end.
 } 
+
+
+//01/22/2025 Dennis added:
+initializeCounter();
+alert("Counter initialized");
+setConnectionStatus();
+
+
