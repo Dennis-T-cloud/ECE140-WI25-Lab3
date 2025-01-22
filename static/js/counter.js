@@ -5,7 +5,7 @@ let count = 0;
 const counterDisplay = document.getElementById('counterDisplay');
 const saveStatus = document.getElementById('saveStatus');
 
-//new pop up about lab 3 part 1, 01/22/2025
+//new pop up about lab 3 part 1, 01/22/2025 Dennis added.
 alert("Counter initialized");
 
 // Function to update the counter
