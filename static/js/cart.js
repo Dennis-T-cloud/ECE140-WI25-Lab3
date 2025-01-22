@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Bug: 
         response = fetch('/api/price?')
+        //const response = await fetch('/api/price?')
         data = response.json()
+        //const data = await response.json();
         productPrice = data.price
         document.getElementById('product-price').textContent = productPrice.toFixed(2);
         logDebug(`Price initialized to: $${productPrice}`);
