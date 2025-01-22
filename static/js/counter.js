@@ -4,6 +4,7 @@ let count = 0;
 // Get DOM elements we'll be updating
 const counterDisplay = document.getElementById('counterDisplay');
 const saveStatus = document.getElementById('saveStatus');
+const newDiv = document.getElementById('connectionStatus');
 
 
 
@@ -43,14 +44,13 @@ async function initializeCounter() {
     try {
         //count = 0; // get this from the server at /get_count
 
-        //01/22/2025, lab 3 part 2, Dennis added:
+        //01/22/2025, lab 3 part 2:
         const response = await fetch('/get_count');
         if(!response.ok){
             throw newError('Network error');
         }
         const data = await response.json();
         count = data["count"];
-        //01/22/2025 added end.
 
         counterDisplay.textContent = count;
 
@@ -67,15 +67,12 @@ function setConnectionStatus() {
     // set div with id connectionStatus text content to "Connected" 
     // and color to green
 
-    //01/22/2025 Dennis added:
-    const newDiv = document.getElementById('connectionStatus');
+    //01/22/2025 part 2:
     newDiv.textContent = 'Connected';
     newDiv.style.color = 'green';
-    //01/22/2025 added end.
 } 
 
 
-//01/22/2025 Dennis added:
 initializeCounter();
 alert("Counter initialized");
 setConnectionStatus();
